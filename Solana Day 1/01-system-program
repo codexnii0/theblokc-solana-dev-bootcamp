@@ -1,0 +1,21 @@
+import * as Web3 from '@solana/web3.js'
+
+async function main () {
+
+ const publicKey = '6PjvhDLKk777of3h1HizBxqnnWYG4Rj9Rm7CgRNgW1Vq' //public key
+
+ /*Get the devnet connection*/
+
+ const URL = Web3.clusterApiUrl('devnet')
+
+ const connection = new Web3.Connection(URL)
+
+ const balance = await connection.getBalance(new Web3.PublicKey(publicKey)) //getBalance() built-in function gets the balance from the phantom wallet while converting the publicKey string to int array
+
+ const solBalance = balance / Web3.LAMPORTS_PER_SOL
+
+ console.log('balance', solBalance)
+
+}
+
+main()
